@@ -1,0 +1,15 @@
+Voici le code d'un Modmail en version V12 de Discord.js (JavaScript)
+Le code possède des fonctions en plus par rapport aux autres Modmail,
+Celui là possède un startTyping & stopTyping
+Cela sert à quand un staff est en train de répondre à un de vos tickets, dans les messages privés du membre y aura écrit "<Pseudo de votre bot> est en train d'écrire..."
+
+Le code est fonctionner à 100%
+Vous devez modifier que le "Config.json" et mettre des informations corrects
+Comme L'ID De votre serveur Discord, L'URL de votre base de donnée MongoDB etc...
+Le code ne fonctionne pas si vous avez pas mis toutes les informations, les informations les plus importantes sont :
+L'URL de votre base de donnée - Sans cela vous pouvez pas stock les Mails
+L'ID de votre serveur - Sinon les mails aurons aucun ID en tant que "Serveur" et donc faire des mails inutilent etc...
+Fin de la petite description du projet que je rend publique sur GitHub
+
+Cordialement,
+Kurama#0001 - Si vous voulez de l'aide, venez me contacter par message priver (Kurama#0001)!

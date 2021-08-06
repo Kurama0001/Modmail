@@ -1,0 +1,16 @@
+{
+  "TOKEN": "XXX", -> JETON DE VOTRE BOT -> https://discord.com/developers/applications
+  "PREFIX": "XXX", -> PREFIX DE VOTRE BOT -> ! ? / * + .
+  "URL_MONGODB": "XXX", URL MONGO ATLAS -> https://account.mongodb.com/account/login?signedOut=true
+  "ERROR": "XXX", -> EMOJI ERREUR -> ❌
+  "WARN": "XXX", -> EMOJI WARNING -> ⚠️
+  "CHECK": "XXX", -> EMOJI CORRECT -> ✅
+  "SERVER": {
+    "ID": "XXX", L'ID DE VOTRE SERVEUR -> CLIQUE DROIT SUR LE SERVEUR ET COPIER L'ID
+    "DELETE_MESSAGE_MS": "XXX" LE TEMPS POUR QU'UN MESSAGE SE SUPPRIME AUTOMATIQUEMENT -> 5000 = 5secondes | 10000 = 10secondes...
+  },
+  "EMBED": {
+    "COLOR": "XXX", LA COULEUR DE VOTRE EMBED -> BLUE/RED/YELLOW/RANDOM - ET EN CODE: EXEMPLE #03dffa
+    "FOOTER": "XXX" LE FOOTER DE VOTRE EMBED -> METTRE LE TEXT DE VOTRE CHOIX, EXEMPLE: "Je suis un Modmail entièrement Français créé par le développeur Kurama#0001"
+  }
+}

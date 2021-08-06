@@ -1,0 +1,16 @@
+{
+  "TOKEN": "XXX",
+  "PREFIX": "XXX",
+  "URL_MONGODB": "XXX",
+  "ERROR": "XXX",
+  "WARN": "XXX",
+  "CHECK": "XXX",
+  "SERVER": {
+    "ID": "XXX",
+    "DELETE_MESSAGE_MS": "XXX"
+  },
+  "EMBED": {
+    "COLOR": "XXX",
+    "FOOTER": "XXX"
+  }
+}
