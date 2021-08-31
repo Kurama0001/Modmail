@@ -40,7 +40,8 @@ client.on('message', async (message) => {
       const mailData = new schema({
         Guild: SERVER.ID,
         Member: member.user.id,
-        Channel: m.id
+        Channel: m.id,
+        Transcript: ""
     })
     mailData.save()
 
@@ -55,6 +56,7 @@ client.on('message', async (message) => {
      return message.channel.send(`${ERROR} Le salon ${message.channel.name} n'est pas un Mail`).then(m => m.delete({ timeout: SERVER.DELETE_MESSAGE_MS}))
     } else {
       const embed = new MessageEmbed() .addField("Ticket fermé :", `Votre ticket a été fermé par le staff **${message.author.tag}**`) .setAuthor(message.author.tag, message.author.displayAvatarURL({dynamic: true})) .setColor(EMBED.COLOR) .setFooter(EMBED.FOOTER)
+      client.guilds.cache.get(SERVER.ID).channels.cache.get(SERVER.LOGS_TRANSCRIPT).send(`Voici le transcript du ticket :\n\`\`\`${dataClose.Transcript}\`\`\``)
       message.channel.delete()
       schema.findOne({ Guild: SERVER.ID, Member: message.channel.name }, async(err, data) => {
             await client.users.cache.get(dataClose.Member).send(embed)
@@ -79,7 +81,8 @@ client.on('message', async (message) => {
        const mailData = new schema({
          Guild: SERVER.ID,
          Member: message.author.id,
-         Channel: m.id
+         Channel: m.id,
+         Transcript: `Membre : ${message.author.tag} [${message.author.id}] - ${message.content}`
      })
      mailData.save()
 
@@ -90,6 +93,7 @@ client.on('message', async (message) => {
    } else if(dataMember) { 
      const embed = new MessageEmbed() .addField("Nouveau message :", message.content ? message.content : `Type : Fichier`) .setAuthor(message.author.tag, message.author.displayAvatarURL({dynamic: true})) .setImage(message.attachments.size > 0 ? message.attachments.first().url : "") .setColor(EMBED.COLOR) .setFooter(EMBED.FOOTER)
       client.channels.cache.get(dataMember.Channel).send(embed)
+      await dataMember.updateOne({ Transcript: dataMember.Transcript === "" ? `Membre : ${message.author.tag} [${message.author.id}] - ${message.content}` : `${dataMember.Transcript}\nMembre : ${message.author.tag} [${message.author.id}] - ${message.content}`})
    }
   } else {
     if(!dataChannel) return
@@ -97,6 +101,7 @@ client.on('message', async (message) => {
       if(message.content === PREFIX + "close") return
       const embed = new MessageEmbed() .addField("Nouveau message :", message.content ? message.content : `Type : Fichier`) .setAuthor(message.author.tag, message.author.displayAvatarURL({dynamic: true})) .setImage(message.attachments.size > 0 ? message.attachments.first().url : "") .setColor(EMBED.COLOR) .setFooter(EMBED.FOOTER)
       client.users.cache.get(dataChannel.Member).send(embed)
+      await dataMember.updateOne({ Transcript: dataMember.Transcript === "" ? `Support : ${message.author.tag} [${message.author.id}] - ${message.content}` : `${dataMember.Transcript}\nSupport : ${message.author.tag} [${message.author.id}] - ${message.content}`})
       client.users.cache.get(dataChannel.Member).createDM().then(m => {
         m.stopTyping()
       })
