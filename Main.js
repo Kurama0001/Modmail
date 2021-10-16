@@ -101,7 +101,7 @@ client.on('message', async (message) => {
       if(message.content === PREFIX + "close") return
       const embed = new MessageEmbed() .addField("Nouveau message :", message.content ? message.content : `Type : Fichier`) .setAuthor(message.author.tag, message.author.displayAvatarURL({dynamic: true})) .setImage(message.attachments.size > 0 ? message.attachments.first().url : "") .setColor(EMBED.COLOR) .setFooter(EMBED.FOOTER)
       client.users.cache.get(dataChannel.Member).send(embed)
-      await dataMember.updateOne({ Transcript: dataMember.Transcript === "" ? `Support : ${message.author.tag} [${message.author.id}] - ${message.content}` : `${dataMember.Transcript}\nSupport : ${message.author.tag} [${message.author.id}] - ${message.content}`})
+      await dataChannel.updateOne({ Transcript: dataChannel.Transcript === "" ? `Support : ${message.author.tag} [${message.author.id}] - ${message.content}` : `${dataChannel.Transcript}\nSupport : ${message.author.tag} [${message.author.id}] - ${message.content}`})
       client.users.cache.get(dataChannel.Member).createDM().then(m => {
         m.stopTyping()
       })
