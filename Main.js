@@ -16,7 +16,7 @@ const mongOptions = {
 }
 
 const DataBase = require('mongoose')
-DataBase.connect(URL_MONGODB, mongOptions) && DataBase.connection.on("connected", () => console.log(`${CHECK} Base de donnée Mongodb en ligne`)).catch(() => console.log(`${ERROR} Base de donnée Mongodb hors ligne`))
+DataBase.connect(URL_MONGODB, mongOptions) && DataBase.connection.on("connected", () => console.log(`${CHECK} Base de donnée Mongodb en ligne`))
 
 const schema = require('./Schema-Mail')
 
